@@ -6,15 +6,38 @@
     <title>FiveM Chat</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background: rgba(0, 0, 0, 0.5);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: rgba(0, 0, 0, 0.8);
             color: white;
+            margin: 0;
+            padding: 20px;
+            overflow: hidden;
+            height: 100%;
+        }
+        #chat {
+            max-height: 400px;
+            overflow-y: auto;
+            border-radius: 10px;
+            padding: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            background: rgba(50, 50, 50, 0.8);
         }
         .chat-message {
-            margin: 5px;
+            margin: 5px 0;
             padding: 10px;
-            border-radius: 5px;
-            background-color: rgba(0, 0, 0, 0.8);
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.1);
+            transition: background-color 0.3s;
+        }
+        .chat-message:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        .username {
+            color: #00bfff; 
+            font-weight: bold;
+        }
+        .message {
+            color: #ffffff;
         }
     </style>
 </head>
@@ -26,8 +49,9 @@
                 var chat = document.getElementById("chat");
                 var message = document.createElement("div");
                 message.className = "chat-message";
-                message.innerHTML = event.data.message;
+                message.innerHTML = "<span class='username'>" + event.data.username + "</span>: <span class='message'>" + event.data.message + "</span>";
                 chat.appendChild(message);
+                chat.scrollTop = chat.scrollHeight; 
             }
         });
     </script>
