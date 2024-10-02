@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FiveM Chat</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+        }
+        .chat-message {
+            margin: 5px;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+    </style>
+</head>
+<body>
+    <div id="chat"></div>
+    <script>
+        window.addEventListener('message', function(event) {
+            if (event.data.type === "chatMessage") {
+                var chat = document.getElementById("chat");
+                var message = document.createElement("div");
+                message.className = "chat-message";
+                message.innerHTML = event.data.message;
+                chat.appendChild(message);
+            }
+        });
+    </script>
+</body>
+</html>
